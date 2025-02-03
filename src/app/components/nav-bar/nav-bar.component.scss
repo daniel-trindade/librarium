@@ -1,0 +1,47 @@
+.nav-container{
+  background: linear-gradient(90deg, #0662b9, #116466);
+  color: #fff;
+  padding: 10px 10px;
+  display: flex;
+  justify-content: space-between;
+
+  h1{
+    font-size: 2.3rem;
+    font-weight: 700;
+  }
+
+  ul{
+    display: flex;
+    list-style: none;
+    align-items: center;
+    justify-content: center;
+
+    li{
+      font-size: 1.5rem;
+      padding: 0 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      a{
+        text-decoration: none;
+        color: #fff;
+      }
+
+      a:hover{
+        color: #fadb2a;
+      }
+
+    }
+  }
+}
+
+
+
+/*
+Cores para o Projeto
+#D9B08C
+#2C3531
+#116466
+
+
+*/
