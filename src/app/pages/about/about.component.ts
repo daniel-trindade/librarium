@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
+import { OptCardComponent } from '../../components/opt-card/opt-card.component';
 
 @Component({
   selector: 'app-about',
-  imports: [],
+  imports: [
+    OptCardComponent
+  ],
   templateUrl: './about.component.html',
   styleUrl: './about.component.scss'
 })

@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { IconsCardComponent } from '../../components/icons-card/icons-card.component';
+import { OptCardComponent } from '../../components/opt-card/opt-card.component';
+
 
 @Component({
   selector: 'app-home',
   imports: [
-    IconsCardComponent
+    OptCardComponent
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
