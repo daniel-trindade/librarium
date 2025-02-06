@@ -7,11 +7,18 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 3px solid #1c1d1f;
   
-  
-  h1{
-    font-size: 2.3rem;
-    font-weight: 700;
+  a{
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.8rem;
+    font-weight: 500;
+    transition: .5s;
+  }
+
+  a:hover{
+    color: #101425;
   }
 
   ul{
@@ -25,16 +32,7 @@
       padding: 0 1rem;
       display: flex;
       align-items: center;
-      justify-content: center;
-      a{
-        text-decoration: none;
-        color: #fff;
-      }
-
-      a:hover{
-        color: #fadb2a;
-      }
-
+      justify-content: center
     }
   }
 }
