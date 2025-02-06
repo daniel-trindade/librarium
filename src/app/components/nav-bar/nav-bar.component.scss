@@ -10,15 +10,58 @@
   box-shadow: 1px 3px 7px rgba(8, 8, 8, 0.5);
   
   a{
-    text-decoration: none;
     color: #fff;
-    font-size: 1.8rem;
-    font-weight: 500;
-    transition: .5s;
+    text-decoration: none;
   }
 
-  a:hover{
-    color: #101425;
+  .brand{
+    font-size: 2.5rem;
+    position: relative;
+    transition: color 0.3s ease;
+  }
+
+  .brand::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0;
+    height: 2px;
+    background: #88e2e4;
+    transition: width 0.3s ease;
+  }
+  
+  .brand:hover {
+    color: #88e2e4;
+  }
+  
+  .brand:hover::after {
+    width: 100%;
+  }
+
+  .txt-itens{
+    font-size: 2rem;
+    position: relative;
+    transition: color 0.3s ease;
+  }
+
+  .txt-itens::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0;
+    height: 2px;
+    background: #88e2e4;
+    transition: width 0.3s ease;
+  }
+  
+  .txt-itens:hover {
+    color: #88e2e4;
+  }
+  
+  .txt-itens:hover::after {
+    width: 100%; /* Expande o sublinhado */
   }
 
   ul{
