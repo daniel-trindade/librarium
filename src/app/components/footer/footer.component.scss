@@ -1,13 +1,14 @@
 .footer{
     width: 100%;
     height: 10vh;
-    background: linear-gradient(270deg, #0662b9, #116466);
+    background: #fff;//linear-gradient(270deg, #0662b9, #116466);
     display: flex;
     justify-content: center;
     align-items: center;
+    border-top: 5px solid #116466;
 
     h1{
         font-size: 1.5rem;
-        color: #fff;
+        color: #116466;
     }
 }
