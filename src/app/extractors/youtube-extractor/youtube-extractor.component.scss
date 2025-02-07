@@ -1,0 +1,21 @@
+.yt-ext{
+    width: 800px;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    input{
+        height: 50px;
+        margin-bottom: 20px;
+    }
+
+    select{
+        height: 50px;
+        margin-bottom: 20px;
+    }
+
+    button{
+        height: 50px;
+    }
+}
