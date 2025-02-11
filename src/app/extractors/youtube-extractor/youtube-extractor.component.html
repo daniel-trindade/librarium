@@ -1,16 +1,21 @@
-<form action="" class="yt-ext">
-  <label for="link">Link do Vídeo:</label>
-  <input type="text" placeholder="Insira a URL do vídeo que deseja extrair" />
-
+<form [formGroup]="yt_form" (ngSubmit)="submitForm()" class="yt-ext">
+  <label for="url">Link do Vídeo:</label>
+  <input
+    type="text"
+    id="url"
+    formControlName="url"
+    placeholder="Insira a URL do vídeo que deseja extrair"
+  />
+  
   <label for="language">Escolha o formato de arquivo:</label>
-  <select name="language" id="language">
+  <select formControlName="format">
     <option value="nt">Escolha um formato</option>
     <option value="txt">TXT</option>
     <option value="PDF">PDF</option>
   </select>
 
   <label for="language">Escolha a linguagem de extração:</label>
-  <select name="language" id="language">
+  <select formControlName="language">
     <option value="nt">Escolha um idioma</option>
     <option value="pt">Português</option>
     <option value="en">Inglês</option>
@@ -18,12 +23,12 @@
   </select>
 
   <label for="translate">Escolha idioma para tradução:</label>
-  <select name="translate" id="translate">
+  <select formControlName="translate">
     <option value="nt">Escolha um idioma</option>
     <option value="pt">Português</option>
     <option value="en">Inglês</option>
     <option value="esp">Espanhol</option>
   </select>
 
-  <button>Extrair</button>
+  <button type="submit">Extrair</button>
 </form>
