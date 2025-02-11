@@ -1,6 +1,6 @@
 .nav-container{
   width: 100%;
-  height: 20vh;
+  height: 15vh;
   background: #fff;
   color: #116466;
   padding: 10px 200px;
@@ -28,12 +28,12 @@
     bottom: -5px;
     width: 0;
     height: 2px;
-    background: #116466;
+    background: #4c4e4e;
     transition: width 0.3s ease;
   }
   
   .brand:hover {
-    color: #116466;
+    color: #4c4e4e;
   }
   
   .brand:hover::after {
@@ -53,12 +53,12 @@
     bottom: -5px;
     width: 0;
     height: 2px;
-    background: #116466;
+    background: #4c4e4e;
     transition: width 0.3s ease;
   }
   
   .txt-itens:hover {
-    color: #116466;
+    color: #4c4e4e;
   }
   
   .txt-itens:hover::after {

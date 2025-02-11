@@ -4,5 +4,13 @@
   margin: 0;
 
   font-family: "Poppins", serif;
+  //background-color: aqua;
+}
 
+body{
+  background-image: url('/assets/background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  //opacity: 0.3;
 }
