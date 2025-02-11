@@ -4,7 +4,6 @@ import { OptCardComponent } from '../../components/opt-card/opt-card.component';
 @Component({
   selector: 'app-about',
   imports: [
-    OptCardComponent
   ],
   templateUrl: './about.component.html',
   styleUrl: './about.component.scss'
