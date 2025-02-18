@@ -40,6 +40,6 @@
     </select>
   </div>
 
-  <button (click)="takeVideoSubtitles()" *ngIf="!showComplementarForm">Buscar Vídeo</button>
+  <button type="button" (click)="takeVideoSubtitles()" *ngIf="!showComplementarForm">Buscar Vídeo</button>
   <button type="submit" *ngIf="showComplementarForm">Extrair</button>
 </form>

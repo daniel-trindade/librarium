@@ -2,16 +2,20 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { YoutubeApiService } from '../../services/youtube-api.service';
 
 @Component({
   selector: 'app-youtube-extractor',
   standalone: true,
   imports: [ReactiveFormsModule, HttpClientModule, CommonModule],
+  providers: [YoutubeApiService],
   templateUrl: './youtube-extractor.component.html',
   styleUrl: './youtube-extractor.component.scss'
 })
 
 export class YoutubeExtractorComponent {
+
+  constructor(private youtubeApiService: YoutubeApiService) {}
 
   showComplementarForm = false;
   yt_id = '';
@@ -27,9 +31,6 @@ export class YoutubeExtractorComponent {
       translate: new FormControl('pt')
     });
   }
-
-  // 
-  // const ;
 
   get url() {
     return this.yt_form.get('url')!;
@@ -48,14 +49,18 @@ export class YoutubeExtractorComponent {
     this.yt_id = this.yt_form.value.url.match(regex)![1];
 
     console.log(this.yt_id);
+    this.getVideoSubtitles();
 
   }
 
   submitForm() {
+    console.log(this.yt_form.value);
+  }
 
-
-
-    const url = this.yt_form.get('url')?.value ?? '';
+  getVideoSubtitles(){
+    this.youtubeApiService.getVideoData(this.yt_id).subscribe((data: any) => {
+      console.log(data);
+    });
   }
 
 }

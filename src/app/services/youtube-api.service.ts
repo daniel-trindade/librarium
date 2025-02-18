@@ -5,13 +5,16 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
+
 export class YoutubeApiService {
-  private apiUrl = '127.0.0.1:8000'; // Substitua pela URL da sua API
+
+  private apiUrl = 'http://localhost:8000'; //URL da API
 
   constructor(private http: HttpClient) {}
 
-  // Função para obter dados do vídeo a partir do ID
   getVideoData(videoId: string): Observable<any> {
-    return this.http.get(`${this.apiUrl}/videos/language?video_id=${videoId}`); // Substitua pela sua URL da API
+    return this.http.get(`${this.apiUrl}/video/language?id_video=${videoId}`);
   }
 }
+
+//https://0ac1-201-77-106-156.ngrok-free.app/video/language_list?id_video=KcyszNFPFts
