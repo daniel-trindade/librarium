@@ -4,6 +4,7 @@ import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angula
 import { HttpClientModule } from '@angular/common/http';
 import { YoutubeApiService } from '../../services/youtube-api.service';
 import { Router } from '@angular/router';
+import { selectValidator } from './selectValidator';
 
 @Component({
   selector: 'app-youtube-extractor',
@@ -32,13 +33,21 @@ export class YoutubeExtractorComponent {
   yt_form!: FormGroup;
 
   ngOnInit() {
+
+    //  FORM VALIDATION
     this.yt_form = new FormGroup({
-      url: new FormControl('', 
-        [Validators.required,
+      url: new FormControl('', [
+        Validators.required,
         Validators.pattern(/^(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:watch\?v=|embed\/|v\/|shorts\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/)]
       ),
-      format: new FormControl('', [Validators.required]),
-      language: new FormControl('', [Validators.required]),
+      format: new FormControl('default', [
+        Validators.required,
+        selectValidator('default')
+      ]),
+      language: new FormControl('default', [
+        Validators.required,
+        selectValidator('default')
+      ]),
       translate: new FormControl('default')
     });
   }
