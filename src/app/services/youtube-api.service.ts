@@ -15,6 +15,8 @@ export class YoutubeApiService {
   getVideoData(videoId: string): Observable<any> {
     return this.http.get(`${this.apiUrl}/video/language_list?id_video=${videoId}`);
   }
-}
 
-//https://0ac1-201-77-106-156.ngrok-free.app/video/language_list?id_video=KcyszNFPFts
+  getExtract(videoId: string, language_code: string, doc_type: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/video?id_video=${videoId}&language_code=${language_code}&doc_type=${doc_type}`, { responseType: 'json' });
+  }
+}

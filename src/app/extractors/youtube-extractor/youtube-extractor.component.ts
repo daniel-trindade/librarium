@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { YoutubeApiService } from '../../services/youtube-api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-youtube-extractor',
@@ -15,20 +16,29 @@ import { YoutubeApiService } from '../../services/youtube-api.service';
 
 export class YoutubeExtractorComponent {
 
-  constructor(private youtubeApiService: YoutubeApiService) {}
+  constructor(
+    private youtubeApiService: YoutubeApiService,
+    private router: Router
+  ) { }
+
 
   // CONTROL VARIABLES
-  showComplementarForm = false;
-  yt_id = '';
+
+  showComplementarForm: boolean = false;
+  showWarnning: boolean = false;
+  yt_id: string = '';
   languages: any[] = [];
   selectedLanguage: string = '';
   yt_form!: FormGroup;
 
   ngOnInit() {
     this.yt_form = new FormGroup({
-      url: new FormControl('', [Validators.required]),
-      format: new FormControl('default'),
-      language: new FormControl('default'),
+      url: new FormControl('', 
+        [Validators.required,
+        Validators.pattern(/^(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:watch\?v=|embed\/|v\/|shorts\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/)]
+      ),
+      format: new FormControl('', [Validators.required]),
+      language: new FormControl('', [Validators.required]),
       translate: new FormControl('default')
     });
   }
@@ -36,32 +46,45 @@ export class YoutubeExtractorComponent {
   get url() {
     return this.yt_form.get('url')!;
   }
+  
+  get format() {
+    return this.yt_form.get('format')!;
+  }
 
-  takeVideoSubtitles(){
+  get language() {
+    return this.yt_form.get('language')!;
+  }
 
-    const regex = /(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|\S+\?v=|v\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+  takeVideoSubtitles() {
 
-    if(this.yt_form.invalid){
+    if (this.yt_form.get('url')?.invalid) {
+      this.showWarnning = true;
       return;
     }
 
-    this.showComplementarForm = true;
+    const regex = /(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|\S+\?v=|v\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
 
+    this.showComplementarForm = true;
+    this.showWarnning = false;
     this.yt_id = this.yt_form.value.url.match(regex)![1];
 
-    console.log(this.yt_id);
     this.getVideoSubtitles();
 
   }
 
   submitForm() {
+    if (this.yt_form.invalid) {
+      return;
+    }
     console.log(this.yt_form.value);
+
+    this.getExtract();
   }
 
 
   // SERVICE FUNCTIONS
 
-  getVideoSubtitles(){
+  getVideoSubtitles() {
     this.youtubeApiService.getVideoData(this.yt_id).subscribe((data: any) => {
       if (data && data.video) {
         this.languages = data.video;
@@ -69,7 +92,22 @@ export class YoutubeExtractorComponent {
       } else {
         this.languages = []; // Garante que não ocorra erro
       }
+    },
+    (error) => {
+      console.error('Erro ao carregar idiomas:', error);
     });
+  }
+
+  getExtract() {
+
+    if (this.yt_form.get('translate')?.value != 'default') {
+      const url_redirect = `http://localhost:8000/video/translate?id_video=${this.yt_id}&source_language_code=${this.yt_form.value.language}&target_language_code=${this.yt_form.value.translate}&doc_type=${this.yt_form.value.format}`;
+      window.location.href = url_redirect;
+      return;
+    }
+
+    const url_redirect = `http://localhost:8000/video?id_video=${this.yt_id}&language_code=${this.yt_form.value.language}&doc_type=${this.yt_form.value.format}`;
+    window.location.href = url_redirect;
   }
 
 }
