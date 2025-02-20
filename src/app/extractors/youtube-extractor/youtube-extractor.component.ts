@@ -17,18 +17,19 @@ export class YoutubeExtractorComponent {
 
   constructor(private youtubeApiService: YoutubeApiService) {}
 
+  // CONTROL VARIABLES
   showComplementarForm = false;
   yt_id = '';
-  
-
+  languages: any[] = [];
+  selectedLanguage: string = '';
   yt_form!: FormGroup;
 
   ngOnInit() {
     this.yt_form = new FormGroup({
       url: new FormControl('', [Validators.required]),
-      format: new FormControl('txt'),
-      language: new FormControl('pt'),
-      translate: new FormControl('pt')
+      format: new FormControl('default'),
+      language: new FormControl('default'),
+      translate: new FormControl('default')
     });
   }
 
@@ -57,9 +58,17 @@ export class YoutubeExtractorComponent {
     console.log(this.yt_form.value);
   }
 
+
+  // SERVICE FUNCTIONS
+
   getVideoSubtitles(){
     this.youtubeApiService.getVideoData(this.yt_id).subscribe((data: any) => {
-      console.log(data);
+      if (data && data.video) {
+        this.languages = data.video;
+        console.log("Idiomas carregados:", this.languages);
+      } else {
+        this.languages = []; // Garante que não ocorra erro
+      }
     });
   }
 

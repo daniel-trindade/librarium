@@ -13,7 +13,7 @@ export class YoutubeApiService {
   constructor(private http: HttpClient) {}
 
   getVideoData(videoId: string): Observable<any> {
-    return this.http.get(`${this.apiUrl}/video/language?id_video=${videoId}`);
+    return this.http.get(`${this.apiUrl}/video/language_list?id_video=${videoId}`);
   }
 }
 
