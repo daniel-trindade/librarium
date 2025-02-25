@@ -1,0 +1,63 @@
+.web-container{
+  width: 800px;
+  display: flex;
+  align-items: center;
+
+  .web-extractor{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    font-size: 18px;
+
+    label{
+      font-size: 18px;
+      margin: 10px 0;
+      text-decoration: double;
+    }
+
+    input{
+      width: 100%;
+      max-width: 800px;
+      height: 50px;
+      padding: 0 10px;
+    }
+
+    select{
+      width: 100%;
+      max-width: 800px;
+      height: 50px;
+      padding: 0 10px;
+    }
+
+    button{
+      width: 100%;
+      margin: 2em 0;
+      height: 50px;
+    }
+
+    .validation-error{
+      color: #DC3545;
+      margin-top: 1em;
+      padding-left: .5em;
+      border-left: 3px solid #DC3545;
+    }
+  }
+}
+
+@media only screen and (max-width: 1000px){
+  .web-container{
+      width: 600px;
+  }
+}
+
+@media only screen and (max-width: 800px){
+  .web-container{
+      width: 400px;
+  }
+}
+
+@media only screen and (max-width: 600px){
+  .web-container{
+      width: 250px;
+  }
+}

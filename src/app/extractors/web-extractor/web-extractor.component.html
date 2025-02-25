@@ -1,0 +1,30 @@
+<div class="web-container">
+  <form
+    class="web-extractor"
+    [formGroup]="web_form"
+    (ngSubmit)="submitForm()"
+    #formDir="ngForm"
+  >
+    <label for="url">URL do Site:</label>
+    <input type="text" id="url" formControlName="url"/>
+    <!-- TRANSFORMAR EM COMPONENTE -->
+    <div
+      *ngIf="(url.invalid && formDir.submitted)"
+      class="validation-error"
+    >
+      <p>Informe uma URL para prosseguir.</p>
+    </div>
+    <label for="format">Escolha o formato do arquivo* :</label>
+    <select formControlName="format">
+      <option value="default">
+        Selecione um formato de arquivo para extração
+      </option>
+      <option value="txt">TXT</option>
+      <option value="pdf">PDF</option>
+    </select>
+    <div *ngIf="format.invalid && formDir.submitted" class="validation-error">
+      <p>Selecione um formato para proseguir com a extração.</p>
+    </div>
+    <button type="submit">Extrair</button>
+  </form>
+</div>

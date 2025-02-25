@@ -4,7 +4,7 @@ import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angula
 import { HttpClientModule } from '@angular/common/http';
 import { YoutubeApiService } from '../../services/youtube-api.service';
 import { Router } from '@angular/router';
-import { selectValidator } from './selectValidator';
+import { selectValidator } from '../selectValidator';
 
 @Component({
   selector: 'app-youtube-extractor',
