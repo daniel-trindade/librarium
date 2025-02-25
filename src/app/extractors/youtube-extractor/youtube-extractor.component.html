@@ -1,50 +1,73 @@
-<form
-  class="yt-ext"
-  [formGroup]="yt_form"
-  (ngSubmit)="submitForm()"
-  #formDir="ngForm"
->
-  <label for="url">Link do Vídeo <span>*</span>:</label>
-  <input
-    type="text"
-    id="url"
-    formControlName="url"
-    placeholder="Insira a URL do vídeo que deseja extrair"
-  />
-  <div *ngIf="url.invalid && formDir.submitted || showWarnning" class="validation-error">
-    <p>Informe uma URL válida do YouTube para extrair o texto do vídeo.</p>
-  </div>
-
-  <div class="complementar-form" *ngIf="showComplementarForm">
-    <label for="language">Escolha o formato de arquivo <span>*</span>:</label>
-    <select formControlName="format">
-      <option value="default">Selecione um formato de arquivo para extração</option>
-      <option value="txt">TXT</option>
-      <option value="pdf">PDF</option>
-    </select>
-    <div *ngIf="format.invalid && formDir.submitted" class="validation-error">
-      <p>Selecione um formato para proseguir com a extração.</p>
+<div class="form-container">
+  <form
+    class="yt-ext"
+    [formGroup]="yt_form"
+    (ngSubmit)="submitForm()"
+    #formDir="ngForm"
+  >
+    <label for="url">Link do Vídeo <span>*</span>:</label>
+    <input
+      type="text"
+      id="url"
+      formControlName="url"
+      placeholder="URL do vídeo que deseja extrair."
+    />
+    <div
+      *ngIf="(url.invalid && formDir.submitted) || showWarnning"
+      class="validation-error"
+    >
+      <p>Informe uma URL válida do YouTube para extrair o texto do vídeo.</p>
     </div>
 
-    <label for="language">Escolha a linguagem de extração  <span>*</span>:</label>
-    <select formControlName="language" placeholder="Selecione um Idioma para extração">
-      <option value="default" selected>Selecione um Idioma para extração</option>
-      <option *ngFor="let lang of languages" [value]="lang.language_code">
-        {{ lang.language }}
-      </option>
-    </select>
-    <div *ngIf="language.invalid && formDir.submitted" class="validation-error">
-      <p>Selecione um idioma para proseguir com a extração.</p>
-    </div>
+    <div class="complementar-form" *ngIf="showComplementarForm">
+      <label for="language">Escolha o formato de arquivo <span>*</span>:</label>
+      <select formControlName="format">
+        <option value="default">
+          Selecione um formato de arquivo para extração
+        </option>
+        <option value="txt">TXT</option>
+        <option value="pdf">PDF</option>
+      </select>
+      <div *ngIf="format.invalid && formDir.submitted" class="validation-error">
+        <p>Selecione um formato para proseguir com a extração.</p>
+      </div>
 
-    <label for="translate">Escolha idioma para tradução:</label>
-    <select formControlName="translate">
-      <option value="default">Selecione um idioma para tradução</option>
-      <option value="pt-br">Português</option>
-      <option value="en">Inglês</option>
-      <option value="es">Espanhol</option>
-    </select>
-  </div>
-  <button type="button" (click)="takeVideoSubtitles()" *ngIf="!showComplementarForm">Buscar Vídeo</button>
-  <button type="submit" *ngIf="showComplementarForm">Extrair</button>
-</form>
+      <label for="language"
+        >Escolha a linguagem de extração <span>*</span>:</label
+      >
+      <select
+        formControlName="language"
+        placeholder="Selecione um Idioma para extração"
+      >
+        <option value="default" selected>
+          Selecione um Idioma para extração
+        </option>
+        <option *ngFor="let lang of languages" [value]="lang.language_code">
+          {{ lang.language }}
+        </option>
+      </select>
+      <div
+        *ngIf="language.invalid && formDir.submitted"
+        class="validation-error"
+      >
+        <p>Selecione um idioma para proseguir com a extração.</p>
+      </div>
+
+      <label for="translate">Escolha idioma para tradução:</label>
+      <select formControlName="translate">
+        <option value="default">Selecione um idioma para tradução</option>
+        <option value="pt-br">Português</option>
+        <option value="en">Inglês</option>
+        <option value="es">Espanhol</option>
+      </select>
+    </div>
+    <button
+      type="button"
+      (click)="takeVideoSubtitles()"
+      *ngIf="!showComplementarForm"
+    >
+      Buscar Vídeo
+    </button>
+    <button type="submit" *ngIf="showComplementarForm">Extrair</button>
+  </form>
+</div>
