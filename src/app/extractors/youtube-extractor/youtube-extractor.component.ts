@@ -1,19 +1,27 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { ErrorAlertComponent } from '../../components/error-alert/error-alert.component';
 import { YoutubeApiService } from '../../services/youtube-api.service';
-import { Router } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 import { selectValidator } from '../selectValidator';
+import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-youtube-extractor',
   standalone: true,
-  imports: [ReactiveFormsModule, HttpClientModule, CommonModule],
+  imports: [
+    ReactiveFormsModule, 
+    HttpClientModule, 
+    CommonModule, 
+    ErrorAlertComponent
+  ],
   providers: [YoutubeApiService],
   templateUrl: './youtube-extractor.component.html',
   styleUrl: './youtube-extractor.component.scss'
 })
+
 
 export class YoutubeExtractorComponent {
 

@@ -3,11 +3,10 @@
     class="web-extractor"
     [formGroup]="web_form"
     (ngSubmit)="submitForm()"
-    #formDir="ngForm"
-  >
+    #formDir="ngForm">
+
     <label for="url">URL do Site:</label>
     <input type="text" id="url" formControlName="url"/>
-
     <app-error-alert 
       message="Informe uma URL válida!"
       *ngIf="url.invalid && formDir.submitted" >
@@ -22,9 +21,10 @@
       <option value="pdf">PDF</option>
     </select>
     <app-error-alert 
-      message="Escolha um formato de saída para proseguir!"
+      message="Selecione um formato para prosseguir com a extração!"
       *ngIf="format.invalid && formDir.submitted" >
     </app-error-alert>
+    
     <button type="submit">Extrair</button>
   </form>
 </div>
