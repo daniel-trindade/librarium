@@ -12,12 +12,13 @@
       formControlName="url"
       placeholder="URL do vídeo que deseja extrair."
     />
+
     <div
       *ngIf="(url.invalid && formDir.submitted) || showWarnning"
       class="validation-error"
     >
       <p>Informe uma URL válida do YouTube para extrair o texto do vídeo.</p>
-    </div>
+    </div> 
 
     <div class="complementar-form" *ngIf="showComplementarForm">
       <label for="language">Escolha o formato de arquivo<span>*</span>:</label>

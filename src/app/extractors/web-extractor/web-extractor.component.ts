@@ -1,17 +1,22 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
+import { ErrorAlertComponent } from '../../components/error-alert/error-alert.component';
 import { HttpClientModule } from '@angular/common/http';
-import { Router } from '@angular/router';
 import { selectValidator } from '../selectValidator';
+import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-web-extractor',
   standalone: true,
-  imports: [ReactiveFormsModule, HttpClientModule, CommonModule],
+  imports: [ReactiveFormsModule, HttpClientModule, CommonModule, ErrorAlertComponent],
   templateUrl: './web-extractor.component.html',
   styleUrl: './web-extractor.component.scss'
 })
+
+
 export class WebExtractorComponent {
 
   constructor(private router: Router){}

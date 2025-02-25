@@ -7,13 +7,12 @@
   >
     <label for="url">URL do Site:</label>
     <input type="text" id="url" formControlName="url"/>
-    <!-- TRANSFORMAR EM COMPONENTE -->
-    <div
-      *ngIf="(url.invalid && formDir.submitted)"
-      class="validation-error"
-    >
-      <p>Informe uma URL para prosseguir.</p>
-    </div>
+
+    <app-error-alert 
+      message="Informe uma URL válida!"
+      *ngIf="url.invalid && formDir.submitted" >
+    </app-error-alert>
+
     <label for="format">Escolha o formato do arquivo* :</label>
     <select formControlName="format">
       <option value="default">
@@ -22,9 +21,10 @@
       <option value="txt">TXT</option>
       <option value="pdf">PDF</option>
     </select>
-    <div *ngIf="format.invalid && formDir.submitted" class="validation-error">
-      <p>Selecione um formato para proseguir com a extração.</p>
-    </div>
+    <app-error-alert 
+      message="Escolha um formato de saída para proseguir!"
+      *ngIf="format.invalid && formDir.submitted" >
+    </app-error-alert>
     <button type="submit">Extrair</button>
   </form>
 </div>
